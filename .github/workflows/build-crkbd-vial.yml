@@ -1,0 +1,30 @@
+name: Build Corne Vial Firmware
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: ghcr.io/qmk/qmk_cli
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Setup QMK
+        run: |
+          git config --global --add safe.directory $(pwd)
+          qmk setup --yes
+
+      - name: Build crkbd/rev1:vial
+        run: |
+          make crkbd/rev1:vial
+
+      - name: Upload firmware
+        uses: actions/upload-artifact@v4
+        with:
+          name: crkbd-vial-firmware
+          path: .build/*.hex
