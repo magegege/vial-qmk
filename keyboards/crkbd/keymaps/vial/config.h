@@ -38,6 +38,20 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // #define MASTER_RIGHT
 // #define EE_HANDS
 
+// -----------
+// TAPPING_TERM change to 50
+#undef TAPPING_TERM
+#define TAPPING_TERM 50
+
+/* Select hand configuration */
+// Change to MASTER_RIGHT
+#undef MASTER_LEFT
+// #define MASTER_LEFT
+#define MASTER_RIGHT
+// #define EE_HANDS
+
+// -----------
+
 #define USE_SERIAL_PD2
 #ifdef RGBLIGHT_ENABLE
 #    undef RGBLIGHT_LED_COUNT
